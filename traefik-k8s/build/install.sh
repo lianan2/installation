@@ -9,5 +9,5 @@ kubectl -n traefik create configmap traefik-config --from-file=templates/traefik
 kubectl apply -f templates/crd.yaml -f templates/crd-rbac.yaml
 
 # 开启traefik服务
-# 这里会将traefik的端口映射到host
 kubectl apply -f templates/deployment.yaml
+kubectl apply -f templates/service.yaml
