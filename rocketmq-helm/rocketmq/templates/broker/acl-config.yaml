@@ -1,0 +1,39 @@
+{{- if .Values.broker.aclConfigMapEnabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "rocketmq.acl.configmap.fullname" . }}
+data:
+  plain_acl.yml: |
+  {{- if .Values.broker.aclConfig }}
+    {{- .Values.broker.aclConfig | nindent 4 }}
+  {{- else }}
+    globalWhiteRemoteAddresses:
+      - '*'
+      - 10.*.*.*
+      - 192.168.*.*
+    accounts:
+      - accessKey: ak8w4nbqnwe88d649c50c1c
+        secretKey: skd685a32c7665c4cc
+        whiteRemoteAddress:
+        admin: false
+        defaultTopicPerm: DENY
+        defaultGroupPerm: SUB
+        topicPerms:
+          - topicA=DENY
+          - topicB=PUB|SUB
+          - topicC=SUB
+          - kylin-user-topic=PUB|SUB
+        groupPerms:
+          # the group should convert to retry topic
+          - groupA=DENY
+          - groupB=PUB|SUB
+          - groupC=SUB
+          - kylin-user-group=PUB|SUB
+      - accessKey: rocketmq2
+        secretKey: 12345678
+        whiteRemoteAddress: 192.168.*.*
+        # if it is admin, it could access all resources
+        admin: true
+  {{- end }}
+{{- end }}
