@@ -1,14 +1,14 @@
 # traefik
 
-部署环境：
+安装：
 ```
-sh build/run_traefik.sh
-sh build/run_whoami.sh
+sh build/install.sh
+sh build/install-middleware.sh
 ```
 
-清理环境：
+卸载：
 ```
-sh build/clear.sh
+sh build/uninstall.sh
 ```
 
 

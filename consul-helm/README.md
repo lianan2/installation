@@ -2,18 +2,6 @@
 
 ## 安装
 values.yaml为默认配置, 要修改的配置写在了config.yaml中
-
-Step1: 确认集群是否有sc, 若没有则创建:
-```shell
-kubectl apply -f templates/sc_pv_pvc/nfs-storageclass.yaml 
-```
-
-Step2: 创建一个consul的pv:
-```shell
-kubectl apply -f templates/sc_pv_pvc/consul-pv.yaml
-```
-
-Step3: 开始部署
 ```shell
 helm install -n consul consul . -f config.yaml --create-namespace
 ```

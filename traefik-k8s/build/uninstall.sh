@@ -1,4 +1,4 @@
-kubectl delete ns traefik apps
+kubectl delete ns traefik
 kubectl get crd | grep traefik | awk '{print $1}' | xargs kubectl delete crd
 kubectl get clusterrole | grep traefik | awk '{print $1}' | xargs kubectl delete clusterrole
 kubectl get clusterrolebinding | grep traefik | awk '{print $1}' | xargs kubectl delete clusterrolebinding
