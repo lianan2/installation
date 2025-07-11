@@ -1,0 +1,12 @@
+# rename header中间件
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: rename-headers
+  namespace: apps
+spec:
+  plugin:
+    traefik-custom-headers-plugin:
+      renameData:
+        - existingHeaderName: X-Test
+          newHeaderName: X-Test-New
