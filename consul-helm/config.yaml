@@ -1,0 +1,37 @@
+global:
+  name: consul
+
+# Consul Server配置
+server:
+  replicas: 1         # 单点部署
+  bootstrapExpect: 1  # replicas为1时需明确告知consul只有1个节点
+  storage: '500Mi'
+  storageClass: "nfs"
+  securityContext:    # root用户运行
+    fsGroup: 2000
+    runAsGroup: 2000
+    runAsNonRoot: false
+    runAsUser: 0
+  resources:
+    requests:
+      memory: '512Mi'
+      cpu: '0.5'
+    limits:
+      memory: '1Gi'
+      cpu: '1'
+
+# Consul Client（Agent）配置
+client:
+  resources:
+    requests:
+      memory: '256Mi'
+      cpu: '0.5'
+    limits:
+      memory: '512Gi'
+      cpu: '1'
+
+# UI配置
+ui:
+  enabled: true
+  service:
+    type: NodePort

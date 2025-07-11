@@ -1,8 +1,8 @@
-# helm部署rocketmq 
+# helm安装rocketmq 
 
-部署：
+安装：
 ```
-sh run.sh
+helm install rocketmq . -n rocketmq --create-namespace
 ```
 
 访问dashboard（账号admin/admin)
