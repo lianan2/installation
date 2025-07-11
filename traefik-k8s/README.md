@@ -12,10 +12,9 @@ sh build/uninstall.sh
 ```
 
 
-访问 traefik Dashboard: http://vm.apps.com:18080/
+访问 traefik Dashboard: http://localhost:32080/dashboard/#/
 
-测试请求whoami服务:
+测试网关请求:
 ```
-curl http://vm.apps.com/test -v
-curl http://vm.apps.com/login --header 'Authorization: Bearer xxx'
+curl http://localhost:30080/ -v
 ```
