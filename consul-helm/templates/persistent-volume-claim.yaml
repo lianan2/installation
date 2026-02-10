@@ -13,6 +13,7 @@ metadata:
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: Immediate
 reclaimPolicy: Retain
+
 ---
 apiVersion: v1
 kind: PersistentVolume

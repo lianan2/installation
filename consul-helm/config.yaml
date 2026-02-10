@@ -6,7 +6,7 @@ server:
   replicas: 1         # 单点部署
   bootstrapExpect: 1  # replicas为1时需明确告知consul只有1个节点
   storage: '500Mi'
-  storageClass: 'local-sc-consul'
+  storageClass: 'local-sc-consul'  # 是在templates/persistent-volume-claim.yaml中创建的
   securityContext:
     runAsUser: 0      # root用户运行
     runAsGroup: 0
@@ -26,7 +26,7 @@ client:
       memory: '256Mi'
       cpu: '0.5'
     limits:
-      memory: '512Gi'
+      memory: '512Mi'
       cpu: '1'
 
 # Connect Inject 配置
